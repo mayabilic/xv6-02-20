@@ -1,0 +1,33 @@
+spawn qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 1 -m 512
+c[?7l[2J[0mSeaBIOS (version 1.16.3-debian-1.16.3-2)
+
+
+iPXE (https://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1EFCAF60+1EF0AF60 CA00
+Press Ctrl-B to configure iPXE (PCI 00:03.0)...                                                                               
+
+
+Booting from Hard Disk..xv6...
+cpu0: starting 0
+sb: size 2000 nblocks 1954 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 45
+init: starting sh
+$ ps
+name 	 pid 	 state 	 	 extpid 	 ppid 	 size 	 cputime 
+init	1	SLEEPING		1	0	16384	114313
+sh	2	SLEEPING		2	1	57344	41494
+ps	3	RUNNING		3	2	16384	22046
+$ 
+
+Test Failure 
+
+ps
+name 	 pid 	 state 	 	 extpid 	 ppid 	 size 	 cputime 
+init	1	SLEEPING		1	0	16384	114313
+sh	2	SLEEPING		2	1	57344	55708
+ps	4	RUNNING		4	2	16384	18745
+$ 
+
+Test Failure 
+
+
+Tests Failures: 2 
+

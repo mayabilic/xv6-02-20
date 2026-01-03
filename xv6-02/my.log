@@ -1,0 +1,62 @@
+ps
+name 	 pid 	 state 	 	 extpid 	 ppid 	 size 	 cputime 
+init 	 1 	 SLEEPING 	 1 	 	 0 	 16384 	 75697 
+sh 	 2 	 SLEEPING 	 2 	 	 1 	 57344 	 25278 
+ps 	 3 	 RUNNING 	 3 	 	 2 	 16384 	 5681 
+$ ps
+name 	 pid 	 state 	 	 extpid 	 ppid 	 size 	 cputime 
+init 	 1 	 SLEEPING 	 1 	 	 0 	 16384 	 75697 
+sh 	 2 	 SLEEPING 	 2 	 	 1 	 57344 	 41947 
+ps 	 4 	 RUNNING 	 4 	 	 2 	 16384 	 17093 
+$ 
+pouch start c1
+$ Pouch: c1 starting
+$ ps
+name 	 pid 	 state 	 	 extpid 	 ppid 	 size 	 cputime 
+init 	 1 	 SLEEPING 	 1 	 	 0 	 16384 	 75697 
+sh 	 2 	 SLEEPING 	 2 	 	 1 	 57344 	 75495 
+pouch 	 7 	 SLEEPING 	 7 	 	 1 	 28672 	 12933 
+sh 	 8 	 SLEEPING 	 8 	 	 7 	 24576 	 12353 
+ps 	 9 	 RUNNING 	 9 	 	 2 	 16384 	 65656 
+$ 
+pouch connect c1
+$ 
+tty0 connected
+ps
+name 	 pid 	 state 	 	 extpid 	 ppid 	 size 	 cputime 
+sh 	 1 	 SLEEPING 	 8 	 	 0 	 57344 	 38600 
+ps 	 2 	 RUNNING 	 12 	 	 1 	 16384 	 13299 
+$ ps
+name 	 pid 	 state 	 	 extpid 	 ppid 	 size 	 cputime 
+sh 	 1 	 SLEEPING 	 8 	 	 0 	 57344 	 63000 
+ps 	 3 	 RUNNING 	 13 	 	 1 	 16384 	 14060 
+$ ps
+name 	 pid 	 state 	 	 extpid 	 ppid 	 size 	 cputime 
+sh 	 1 	 SLEEPING 	 8 	 	 0 	 57344 	 83672 
+ps 	 4 	 RUNNING 	 14 	 	 1 	 16384 	 15156 
+$ 
+pouch disconnect
+$ Console connected
+ps
+name 	 pid 	 state 	 	 extpid 	 ppid 	 size 	 cputime 
+init 	 1 	 SLEEPING 	 1 	 	 0 	 16384 	 75697 
+sh 	 2 	 SLEEPING 	 2 	 	 1 	 57344 	 114193 
+pouch 	 7 	 SLEEPING 	 7 	 	 1 	 28672 	 12933 
+sh 	 8 	 SLEEPING 	 8 	 	 7 	 57344 	 113144 
+ps 	 17 	 RUNNING 	 17 	 	 2 	 16384 	 19120 
+$ ps
+name 	 pid 	 state 	 	 extpid 	 ppid 	 size 	 cputime 
+init 	 1 	 SLEEPING 	 1 	 	 0 	 16384 	 75697 
+sh 	 2 	 SLEEPING 	 2 	 	 1 	 57344 	 136214 
+pouch 	 7 	 SLEEPING 	 7 	 	 1 	 28672 	 12933 
+sh 	 8 	 SLEEPING 	 8 	 	 7 	 57344 	 113144 
+ps 	 18 	 RUNNING 	 18 	 	 2 	 16384 	 43360 
+$ 
+pouch destroy c1
+$ Pouch: c1 destroyed
+$ zombie!
+ps
+name 	 pid 	 state 	 	 extpid 	 ppid 	 size 	 cputime 
+init 	 1 	 SLEEPING 	 1 	 	 0 	 16384 	 78177 
+sh 	 2 	 SLEEPING 	 2 	 	 1 	 57344 	 190861 
+ps 	 21 	 RUNNING 	 21 	 	 2 	 16384 	 11430 
